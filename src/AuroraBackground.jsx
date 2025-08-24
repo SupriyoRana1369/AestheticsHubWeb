@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { cn } from "./lib/utils"; // import the helper we made
+import { cn } from "./lib/utils";
 
 export function AuroraBackground({
   className,
@@ -12,49 +12,23 @@ export function AuroraBackground({
     <main>
       <div
         className={cn(
-          // 🔥 changed h-[100vh] → min-h-screen
-          "transition-bg relative flex min-h-screen w-full flex-col items-center justify-start bg-zinc-50 text-slate-950 dark:bg-zinc-900",
+          "transition-bg relative flex min-h-screen w-full flex-col items-center justify-start bg-black text-white",
           className
         )}
         {...props}
       >
         {/* Aurora effect */}
-        <div
-          className="absolute inset-0"
-          style={{
-            "--aurora":
-              "repeating-linear-gradient(100deg,#3b82f6_10%,#a5b4fc_15%,#93c5fd_20%,#ddd6fe_25%,#60a5fa_30%)",
-            "--dark-gradient":
-              "repeating-linear-gradient(100deg,#000_0%,#000_7%,transparent_10%,transparent_12%,#000_16%)",
-            "--white-gradient":
-              "repeating-linear-gradient(100deg,#fff_0%,#fff_7%,transparent_10%,transparent_12%,#fff_16%)",
-            "--blue-300": "#93c5fd",
-            "--blue-400": "#60a5fa",
-            "--blue-500": "#3b82f6",
-            "--indigo-300": "#a5b4fc",
-            "--violet-200": "#ddd6fe",
-            "--black": "#000",
-            "--white": "#fff",
-            "--transparent": "transparent",
-          }}
-        >
+        <div className="absolute inset-0 overflow-hidden">
           <div
             className={cn(
-              `after:animate-aurora pointer-events-none absolute -inset-[10px]
-               [background-image:var(--white-gradient),var(--aurora)]
-               [background-size:300%,_200%] [background-position:50%_50%,50%_50%]
-               opacity-50 blur-[10px] invert filter will-change-transform
-               [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)]
-               [--dark-gradient:repeating-linear-gradient(100deg,var(--black)_0%,var(--black)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--black)_16%)]
-               [--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
-               after:absolute after:inset-0
-               after:[background-image:var(--white-gradient),var(--aurora)]
-               after:[background-size:200%,_100%] after:[background-attachment:fixed]
-               after:mix-blend-difference after:content-[""]
-               dark:[background-image:var(--dark-gradient),var(--aurora)]
-               dark:invert-0 after:dark:[background-image:var(--dark-gradient),var(--aurora)]`,
+              `pointer-events-none absolute -inset-[20px]
+               [background-image:repeating-linear-gradient(120deg,#3b82f6_10%,#a5b4fc_20%,#93c5fd_30%,#ddd6fe_40%,#60a5fa_50%)]
+               [background-size:200%_200%]
+               animate-[auroraMove_15s_linear_infinite]
+               opacity-60 blur-[80px]
+               mix-blend-screen`,
               showRadialGradient &&
-                `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`
+                `[mask-image:radial-gradient(ellipse_at_center,rgba(0,0,0,1)_20%,transparent_80%)]`
             )}
           ></div>
         </div>
@@ -62,6 +36,21 @@ export function AuroraBackground({
         {/* Content inside aurora */}
         <div className="relative z-10 w-full">{children}</div>
       </div>
+
+      {/* Aurora animation keyframes */}
+      <style jsx>{`
+        @keyframes auroraMove {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </main>
   );
 }

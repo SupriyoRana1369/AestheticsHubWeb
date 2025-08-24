@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import Navbar from './Navbar.jsx';
+import Navbar from "./Navbar.jsx";
 import { AuroraBackground } from "./AuroraBackground";
+
 
 const HomePage = () => {
   const joinCommunity = useRef();

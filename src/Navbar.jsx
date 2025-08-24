@@ -10,7 +10,10 @@ export default function Navbar() {
   const navRef = useRef();
   const navHomeRef = useRef();
   const navAboutRef = useRef();
-  const navServicesRef = useRef();
+  const navContactRef = useRef();
+  const navGetRef = useRef();
+  const navResultsRef = useRef();
+  const navFaqRef = useRef();
 
   useGSAP(() => {
     // Animate navbar container
@@ -28,7 +31,7 @@ export default function Navbar() {
     );
 
     // Animate nav links
-    [navHomeRef, navAboutRef, navServicesRef].forEach((ref, i) => {
+    [navHomeRef, navGetRef, navResultsRef, navAboutRef, navFaqRef, navContactRef].forEach((ref, i) => {
       gsap.fromTo(
         ref.current,
         { y: -50, opacity: 0 },
@@ -51,7 +54,7 @@ export default function Navbar() {
 
     // --- Hover animations ---
     const elJoin = joinUsRef.current;
-    const navLinks = [navHomeRef.current, navAboutRef.current, navServicesRef.current];
+    const navLinks = [navHomeRef.current, navGetRef.current, navResultsRef.current, navAboutRef.current, navFaqRef.current, navContactRef.current];
     const elLogo = logoTextRef.current;
 
     // Join Us hover
@@ -70,7 +73,7 @@ export default function Navbar() {
     const onJoinLeave = () => {
       gsap.to(elJoin, {
         scale: 1,
-        backgroundColor: "rgba(255,255,255,0.05)",
+        backgroundColor: "rgba(255,255,255,0.00)",
         backdropFilter: "blur(8px)",
         color: "#ccc",
         borderRadius: "1.5rem",
@@ -148,6 +151,20 @@ export default function Navbar() {
             Home
           </a>
           <a
+            ref={navGetRef}
+            href="#"
+            className="cursor-none text-lg text-gray-300 hover:text-white transition-colors"
+          >
+           What You'll Learn?
+          </a>
+          <a
+            ref={navResultsRef}
+            href="#"
+            className="cursor-none text-lg text-gray-300 hover:text-white transition-colors"
+          >
+           Results
+          </a>
+          <a
             ref={navAboutRef}
             href="#"
             className="cursor-none text-lg text-gray-300 hover:text-white transition-colors"
@@ -155,11 +172,18 @@ export default function Navbar() {
             About
           </a>
           <a
-            ref={navServicesRef}
+            ref={navFaqRef}
             href="#"
             className="cursor-none text-lg text-gray-300 hover:text-white transition-colors"
           >
-            Services
+            FAQ
+          </a>
+          <a
+            ref={navContactRef}
+            href="#"
+            className="cursor-none text-lg text-gray-300 hover:text-white transition-colors"
+          >
+            Contact
           </a>
 
           {/* Join Us button */}
