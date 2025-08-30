@@ -1,15 +1,14 @@
 import React from 'react';
-
+import SplineScene from './SplineScene.jsx';
 import HomePage from './HomePage.jsx';
-import Cursor from './Cursor.jsx';
 
 const App = () => {
   return (
-    <main className='cursor-none'>
+    <main>
 
       <HomePage />
-      <Cursor />
-
+      {//<SplineScene />}
+}
     </main>
   );
 };

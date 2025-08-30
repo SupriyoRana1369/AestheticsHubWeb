@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         caslon: ['"Libre Caslon Display"', 'serif'],
         goldman: ['"Goldman"', 'sans-serif'],
+        dmsans: ['"DM Sans"', 'sans-serif'],
       },
       keyframes: {
         aurora: {

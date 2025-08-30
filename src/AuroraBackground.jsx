@@ -38,7 +38,7 @@ export function AuroraBackground({
       </div>
 
       {/* Aurora animation keyframes */}
-      <style jsx>{`
+      <style jsx="true">{`
         @keyframes auroraMove {
           0% {
             background-position: 0% 50%;

@@ -3,7 +3,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Navbar from "./Navbar.jsx";
 import { AuroraBackground } from "./AuroraBackground";
-
+import WaveBtnAnimation from "./WaveBtnAnimation.jsx";
+import Cursor from "./Cursor";
 
 const HomePage = () => {
   const joinCommunity = useRef();
@@ -13,7 +14,8 @@ const HomePage = () => {
     const el = joinCommunity.current;
     const title = heading.current;
 
-    // Animations
+    if (!el || !title) return;
+
     gsap.from(el, {
       y: -20,
       duration: 0.7,
@@ -28,7 +30,6 @@ const HomePage = () => {
       ease: "power3.out",
     });
 
-    // Hover Animations
     const onEnter = () => {
       gsap.to(el, {
         scale: 1.1,
@@ -54,7 +55,6 @@ const HomePage = () => {
     el.addEventListener("mouseenter", onEnter);
     el.addEventListener("mouseleave", onLeave);
 
-    // Cleanup on unmount
     return () => {
       el.removeEventListener("mouseenter", onEnter);
       el.removeEventListener("mouseleave", onLeave);
@@ -63,26 +63,31 @@ const HomePage = () => {
 
   return (
     <AuroraBackground>
+      <Cursor />
       <Navbar />
-      <div className="w-screen min-h-screen flex flex-col items-center pt-4 overflow-x-hidden overflow-y-auto px-[5vw]">
-        <div
-          ref={heading}
-          className="text-white font-bold text-[6.5vw] no-wrap cursor-hover"
-        >
-          AESTHETICS MATTERS.
+
+      {/* Parent container */}
+      <div className="w-screen h-screen flex flex-col lg:flex-row items-center justify-center px-[5vw] gap-8 lg:gap-4 mt-[-4rem]">
+        
+        {/* Left Section */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-8 lg:w-[45%] lg:mt-[-30rem]">
+          <div className="flex flex-col gap-5">
+          <div
+            ref={heading}
+            className="text-white font-bold leading-[12vw] lg:leading-[6vw] tracking-[0.1px] text-[12vw] lg:text-[6vw] cursor-hover"
+          >
+            AESTHETICS <br /> MATTERS.
+          </div>
+
+          
+          </div>
+      <WaveBtnAnimation borderColor="white" waveFill="white" btnTextColor="white" afterAnimationTextColor="black" />
         </div>
 
-        <div className="flex flex-col justify-center align-center w-full mt-4">
-          <div className="bg-white text-black px-[40vw] py-[20vw] m-4 cursor-hover">
+        {/* Right Section */}
+        <div className="flex justify-center lg:justify-start lg:w-[45%]">
+          <div className="bg-white text-black aspect-video w-[80vw] lg:w-[100%] cursor-hover flex items-center justify-center lg:mt-[4rem]">
             video
-          </div>
-          <div className="flex justify-center">
-            <div
-              ref={joinCommunity}
-              className="bg-black text-white border font-semibold border-white rounded-3xl m-4 px-12 py-4 w-fit flex justify-center items-center cursor-hover"
-            >
-              Join Community
-            </div>
           </div>
         </div>
       </div>
