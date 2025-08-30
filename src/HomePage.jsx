@@ -74,7 +74,7 @@ const HomePage = () => {
           <div className="flex flex-col gap-5">
           <div
             ref={heading}
-            className="text-white font-bold leading-[12vw] lg:leading-[6vw] tracking-[0.1px] text-[12vw] lg:text-[6vw] cursor-hover"
+            className="text-white  leading-[12vw] lg:leading-[6vw] tracking-[0.1px] text-[12vw] lg:text-[6vw] cursor-hover font-anton"
           >
             AESTHETICS <br /> MATTERS.
           </div>

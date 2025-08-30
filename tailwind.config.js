@@ -17,6 +17,8 @@ export default {
         caslon: ['"Libre Caslon Display"', 'serif'],
         goldman: ['"Goldman"', 'sans-serif'],
         dmsans: ['"DM Sans"', 'sans-serif'],
+        anton: ['Anton', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
       keyframes: {
         aurora: {

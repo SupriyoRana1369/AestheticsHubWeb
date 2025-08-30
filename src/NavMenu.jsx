@@ -43,7 +43,7 @@ export default function NavMenu({ isOpen }) {
   }, [isOpen]);
 
   const itemClass =
-    "menu-item text-black font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl cursor-pointer cursor-hover text-center";
+    "menu-item text-black font-bold font-poppins text-3xl sm:text-4xl md:text-5xl lg:text-6xl cursor-pointer cursor-hover text-center";
 
   return (
     <>

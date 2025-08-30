@@ -17,7 +17,7 @@ const WaveBtnAnimation = ({borderColor, waveFill, btnTextColor, afterAnimationTe
 
 
   return (
-    <button ref={btnRef} onClick={handleCheck} className={`relative px-8 py-3 font-semibold text-${btnTextColor} border-2 border-${borderColor} overflow-hidden group rounded-full cursor-pointer`}>
+    <button ref={btnRef} onClick={handleCheck} className={`font-poppins relative px-8 py-3 font-semibold text-${btnTextColor} border-2 border-${borderColor} overflow-hidden group rounded-full cursor-pointer`}>
       
       {/* Wave background */}
       <span className={`absolute inset-0 w-full h-full bg-${waveFill} transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-in-out z-0`}></span>
