@@ -18,7 +18,7 @@ const Cursor = () => {
 
     const handleEnter = (e) => {
       if (e.target.classList.contains("cursor-hover")) {
-        gsap.to(cursor, { scale: 3, duration: 0.3, ease: "power3.out" });
+        gsap.to(cursor, { scale: 6, duration: 0.3, ease: "power3.out" });
       }
     };
 

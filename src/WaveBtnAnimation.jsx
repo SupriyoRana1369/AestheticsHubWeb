@@ -23,12 +23,12 @@ const WaveBtnAnimation = ({borderColor, waveFill, btnTextColor, afterAnimationTe
       <span className={`absolute inset-0 w-full h-full bg-${waveFill} transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-in-out z-0`}></span>
 
       {/* Text layer 1 */}
-      <span className='relative z-10 block transition-transform duration-500 ease-in-out group-hover:-translate-y-full'>
+      <span className='relative z-1 block transition-transform duration-500 ease-in-out group-hover:-translate-y-full'>
         Join Community
       </span>
 
       {/* Text layer 2 */}
-      <span className={`absolute inset-0 flex items-center justify-center z-10 text-${afterAnimationTextColor} transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out`}>
+      <span className={`absolute inset-0 flex items-center justify-center z-1 text-${afterAnimationTextColor} transform -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out`}>
         Let's Go!
       </span>
     </button>

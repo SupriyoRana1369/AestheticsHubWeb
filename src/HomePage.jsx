@@ -67,29 +67,33 @@ const HomePage = () => {
       <Navbar />
 
       {/* Parent container */}
-      <div className="w-screen h-screen flex flex-col lg:flex-row items-center justify-center px-[5vw] gap-8 lg:gap-4 mt-[-4rem]">
+      <div className="w-screen h-screen flex flex-col lg:flex-row items-center justify-center px-[5vw] gap-8 lg:gap-4 mt-[-4rem] h900:flex-col h900:justify-center h900:mt-0">
         
         {/* Left Section */}
-        <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-8 lg:w-[45%] lg:mt-[-30rem]">
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-8 lg:w-[45%] lg:mt-[-30rem] h900:mt-0 h900:items-center">
           <div className="flex flex-col gap-5">
-          <div
-            ref={heading}
-            className="text-white  leading-[12vw] lg:leading-[6vw] tracking-[0.1px] text-[12vw] lg:text-[6vw] cursor-hover font-anton"
-          >
-            AESTHETICS <br /> MATTERS.
+            <div
+              ref={heading}
+              className="text-white leading-[12vw] lg:leading-[6vw] tracking-[0.1px] text-[12vw] lg:text-[6vw] cursor-hover font-anton h900:text-[8vw] h900:leading-[8vw]  h900:text-center"
+            >
+              AESTHETICS <br /> MATTERS.
+            </div>
           </div>
-
-          
-          </div>
-      <WaveBtnAnimation borderColor="white" waveFill="white" btnTextColor="white" afterAnimationTextColor="black" />
+          <WaveBtnAnimation 
+            borderColor="white" 
+            waveFill="white" 
+            btnTextColor="white" 
+            afterAnimationTextColor="black" 
+          />
         </div>
 
         {/* Right Section */}
-        <div className="flex justify-center lg:justify-start lg:w-[45%]">
-          <div className="bg-white text-black aspect-video w-[80vw] lg:w-[100%] cursor-hover flex items-center justify-center lg:mt-[4rem]">
+        <div className="flex justify-center lg:justify-start lg:w-[45%] h900:justify-center">
+          <div className="bg-white text-black aspect-video w-[80vw] lg:w-[100%] cursor-hover flex items-center justify-center lg:mt-[4rem] h900:mt-0">
             video
           </div>
         </div>
+
       </div>
     </AuroraBackground>
   );

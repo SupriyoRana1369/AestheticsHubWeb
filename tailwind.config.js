@@ -30,6 +30,9 @@ export default {
           },
         },
       },
+       screens: {
+        'h900': {'raw': '(max-height: 900px)'},
+      },
     },
   },
   plugins: [],

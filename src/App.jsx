@@ -1,14 +1,13 @@
 import React from 'react';
-import SplineScene from './SplineScene.jsx';
 import HomePage from './HomePage.jsx';
+import WhatYouWillGet from './WhatYouWillGet.jsx';
 
 const App = () => {
   return (
     <main>
 
       <HomePage />
-      {//<SplineScene />}
-}
+      <WhatYouWillGet />
     </main>
   );
 };
