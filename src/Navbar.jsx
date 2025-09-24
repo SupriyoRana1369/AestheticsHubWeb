@@ -81,7 +81,7 @@ export default function Navbar() {
           <h1>
             <div
               ref={logo}
-              className="text-white font-bold font-goldman text-2xl drop-shadow-lg leading-tight"
+              className="text-white font-bold font-goldman text-2xl drop-shadow-lg leading-tight flex flex-col"
             >
               Aesthetics Hub
             </div>
