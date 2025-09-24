@@ -20,7 +20,7 @@ export default function Navbar() {
       .split(" ")
       .map(
         (word) =>
-          `<span style="display:block; opacity:0; margin-bottom:0.4rem;">${word}</span>`
+          `<span style="display:inline-block; opacity:0; margin-bottom:0.4rem;">${word}</span>`
       )
       .join("");
 
@@ -81,7 +81,7 @@ export default function Navbar() {
           <h1>
             <div
               ref={logo}
-              className="text-white font-bold font-goldman text-2xl drop-shadow-lg leading-tight flex flex-col"
+              className="text-white font-bold font-goldman text-3xl drop-shadow-lg leading-tight flex flex-col"
             >
               Aesthetics Hub
             </div>
