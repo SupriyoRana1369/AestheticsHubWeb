@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import NavMenu from "./NavMenu";
 
@@ -8,6 +8,34 @@ export default function Navbar() {
   const bottomLine = useRef(null);
   const menuRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const logo = useRef(null);
+
+  // Animate logo words on mount
+  useEffect(() => {
+    if (!logo.current) return;
+
+    // Split into words and put each on its own line
+    const text = logo.current.innerText;
+    logo.current.innerHTML = text
+      .split(" ")
+      .map(
+        (word) =>
+          `<span style="display:block; opacity:0; margin-bottom:0.4rem;">${word}</span>`
+      )
+      .join("");
+
+    gsap.fromTo(
+      logo.current.querySelectorAll("span"),
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.3, // delay between words
+        duration: 0.6,
+        ease: "power3.out",
+      }
+    );
+  }, []);
 
   const toggleMenu = () => {
     if (!isOpen) {
@@ -51,7 +79,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between w-full">
           {/* Logo */}
           <h1>
-            <div className="text-white font-bold font-goldman text-3xl drop-shadow-lg">
+            <div
+              ref={logo}
+              className="text-white font-bold font-goldman text-3xl drop-shadow-lg leading-tight"
+            >
               Aesthetics Hub
             </div>
           </h1>

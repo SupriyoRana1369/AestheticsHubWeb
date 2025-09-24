@@ -7,58 +7,24 @@ import WaveBtnAnimation from "./WaveBtnAnimation.jsx";
 import Cursor from "./Cursor";
 
 const HomePage = () => {
-  const joinCommunity = useRef();
   const heading = useRef();
 
   useGSAP(() => {
-    const el = joinCommunity.current;
     const title = heading.current;
+    if (!title) return;
 
-    if (!el || !title) return;
-
-    gsap.from(el, {
-      y: -20,
-      duration: 0.7,
-      delay: 1.2,
-      ease: "power3.out",
-    });
-
-    gsap.from(title, {
-      y: -20,
-      duration: 0.7,
-      delay: 0.2,
-      ease: "power3.out",
-    });
-
-    const onEnter = () => {
-      gsap.to(el, {
-        scale: 1.1,
-        backgroundColor: "#f1f1f1",
-        color: "#000",
-        borderRadius: "1rem",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    };
-
-    const onLeave = () => {
-      gsap.to(el, {
-        scale: 1,
-        backgroundColor: "#111",
-        color: "#ccc",
-        borderRadius: "1.5rem",
-        duration: 0.3,
-        ease: "power2.inOut",
-      });
-    };
-
-    el.addEventListener("mouseenter", onEnter);
-    el.addEventListener("mouseleave", onLeave);
-
-    return () => {
-      el.removeEventListener("mouseenter", onEnter);
-      el.removeEventListener("mouseleave", onLeave);
-    };
+    // Animate heading text letters (slide up + fade in)
+    gsap.fromTo(
+      title.querySelectorAll("span"),
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+        duration: 0.6,
+        ease: "power3.out",
+      }
+    );
   }, []);
 
   return (
@@ -74,9 +40,19 @@ const HomePage = () => {
           <div className="flex flex-col gap-5">
             <div
               ref={heading}
-              className="text-white leading-[12vw] lg:leading-[6vw] tracking-[0.1px] text-[12vw] lg:text-[6vw] cursor-hover font-anton h900:text-[8vw] h900:leading-[8vw]  h900:text-center"
+              className="text-white leading-[12vw] lg:leading-[6vw] tracking-[0.1px] text-[12vw] lg:text-[6vw] cursor-hover font-anton h900:text-[8vw] h900:leading-[8vw] h900:text-center"
             >
-              AESTHETICS <br /> MATTERS.
+              {"AESTHETICS".split("").map((char, index) => (
+                <span key={index} className="inline-block opacity-0">
+                  {char}
+                </span>
+              ))}
+              <br />
+              {"MATTERS.".split("").map((char, index) => (
+                <span key={index} className="inline-block opacity-0">
+                  {char}
+                </span>
+              ))}
             </div>
           </div>
           <WaveBtnAnimation 
