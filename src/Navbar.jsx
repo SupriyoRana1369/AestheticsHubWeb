@@ -20,9 +20,9 @@ export default function Navbar() {
       .split(" ")
       .map(
         (word) =>
-          `<span style="display:inline-block; opacity:0; margin-bottom:0.4rem;">${word}</span>`
+          `<span style="display:inline-block; opacity:0; margin-right:0.75rem;">${word}</span>`
       )
-      .join("");
+      .join("&nbsp;");
 
     gsap.fromTo(
       logo.current.querySelectorAll("span"),
@@ -81,7 +81,7 @@ export default function Navbar() {
           <h1>
             <div
               ref={logo}
-              className="text-white font-bold font-goldman text-3xl drop-shadow-lg leading-tight"
+              className="text-white font-bold font-goldman text-3xl drop-shadow-lg leading-tight gap-x-4"
             >
               Aesthetics Hub
             </div>
