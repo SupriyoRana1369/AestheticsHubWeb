@@ -1,6 +1,5 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import Navbar from "./Navbar.jsx";
 import { AuroraBackground } from "./AuroraBackground";
 import WaveBtnAnimation from "./WaveBtnAnimation.jsx";
@@ -9,22 +8,32 @@ import Cursor from "./Cursor";
 const HomePage = () => {
   const heading = useRef();
 
-  useGSAP(() => {
+  useEffect(() => {
     const title = heading.current;
     if (!title) return;
 
-    // Animate heading text letters (slide up + fade in)
-    gsap.fromTo(
-      title.querySelectorAll("span"),
-      { y: 50, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.05,
-        duration: 0.6,
-        ease: "power3.out",
-      }
-    );
+    // Wait for fonts to load AND DOM to be ready
+    const runAnimation = () => {
+      gsap.fromTo(
+        title.querySelectorAll("span"),
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.05,
+          duration: 0.6,
+          ease: "power3.out",
+        }
+      );
+    };
+
+    // Modern browsers: wait for fonts
+    if (document.fonts) {
+      document.fonts.ready.then(runAnimation);
+    } else {
+      // fallback if fonts API not supported
+      setTimeout(runAnimation, 100);
+    }
   }, []);
 
   return (
@@ -32,9 +41,7 @@ const HomePage = () => {
       <Cursor />
       <Navbar />
 
-      {/* Parent container */}
       <div className="w-screen h-screen flex flex-col lg:flex-row items-center justify-center px-[5vw] gap-8 lg:gap-4 mt-[-4rem] h900:flex-col h900:justify-center h900:mt-0">
-        
         {/* Left Section */}
         <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-8 lg:w-[45%] lg:mt-[-30rem] h900:mt-0 h900:items-center">
           <div className="flex flex-col gap-5">
@@ -55,11 +62,11 @@ const HomePage = () => {
               ))}
             </div>
           </div>
-          <WaveBtnAnimation 
-            borderColor="white" 
-            waveFill="white" 
-            btnTextColor="white" 
-            afterAnimationTextColor="black" 
+          <WaveBtnAnimation
+            borderColor="white"
+            waveFill="white"
+            btnTextColor="white"
+            afterAnimationTextColor="black"
           />
         </div>
 
@@ -69,7 +76,6 @@ const HomePage = () => {
             video
           </div>
         </div>
-
       </div>
     </AuroraBackground>
   );
